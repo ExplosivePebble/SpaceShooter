@@ -2,8 +2,10 @@
 
 public class Bullet : MonoBehaviour
 {
+    public AudioSource explosionSource;
     void Start()
     {
+        explosionSource = GetComponent<AudioSource>();
         GetComponent<Rigidbody>().AddForce(transform.up * 350);
     }
 
@@ -14,6 +16,7 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        Destroy(gameObject, 0.0f);
+        explosionSource.Play();
+        Destroy(gameObject, 0.75f);
     }
 }

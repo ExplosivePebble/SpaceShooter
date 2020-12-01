@@ -8,9 +8,11 @@ public class Rocket : MonoBehaviour
     private float MaxSpeed = 4.5f;
     private Camera mainCam;
     private Rigidbody rb;
+    public AudioSource laserSource;
 
     private void Start()
     {
+        laserSource = GetComponent<AudioSource>();
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody>();
         bullet.SetActive(false);
@@ -73,6 +75,8 @@ public class Rocket : MonoBehaviour
 
     void Shoot()
     {
+        SoundManager.sndMan.PlayLaserSound();
+        //laserSource.Play();
         GameObject BulletClone = Instantiate(bullet, new Vector2(bullet.transform.position.x, bullet.transform.position.y), transform.rotation);
         BulletClone.SetActive(true);
         BulletClone.GetComponent<Bullet>().KillOldBullet();

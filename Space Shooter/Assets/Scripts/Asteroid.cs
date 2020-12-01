@@ -13,9 +13,11 @@ public class Asteroid : MonoBehaviour
     private Camera mainCam;
     private float maxSpeed;
     private int _generation;
+    public AudioSource explosionSource;
 
     void Start()
     {
+        explosionSource = GetComponent<AudioSource>();
 
         mainCam = Camera.main;
 
@@ -70,6 +72,8 @@ public class Asteroid : MonoBehaviour
 
         if (collisionInfo.collider.name == "Rocket")
         {
+            SoundManager.sndMan.PlayDeathSound();
+            //explosionSource.Play();
             gameplay.RocketFail();
         }
     }
@@ -140,6 +144,7 @@ public class Asteroid : MonoBehaviour
 
     public void Destroy()
     {
+        explosionSource.Play();
         gameplay.asterodDestroyed();
         Destroy(gameObject, 0.01f);
     }
