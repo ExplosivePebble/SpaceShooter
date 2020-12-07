@@ -15,11 +15,19 @@ public class SoundManager : MonoBehaviour
 
     private AudioClip[] asteroidExplosionSounds;
 
+    private AudioClip[] gameoverSounds;
+
+    private AudioClip[] uiButtonSounds;
+
     private int randomLaserSound;
 
     private int randomDeathSound;
 
     private int randomAsteroidSound;
+
+    private int randomGameOver;
+
+    private int randomButtonSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +36,8 @@ public class SoundManager : MonoBehaviour
         laserSounds = Resources.LoadAll<AudioClip>("LaserSounds");
         playerExplosionSounds = Resources.LoadAll<AudioClip>("PlayerDeathSounds");
         asteroidExplosionSounds = Resources.LoadAll<AudioClip>("AsteroidSounds");
+        gameoverSounds = Resources.LoadAll<AudioClip>("GameOverSounds");
+        uiButtonSounds = Resources.LoadAll<AudioClip>("ButtonSounds");
 
     }
 
@@ -47,5 +57,17 @@ public class SoundManager : MonoBehaviour
     {
         randomAsteroidSound = Random.Range(0, 3);
         audioSrc.PlayOneShot(asteroidExplosionSounds[randomAsteroidSound]);
+    }
+
+    public void PlayGameoverSound()
+    {
+        randomGameOver = Random.Range(0, 1);
+        audioSrc.PlayOneShot(gameoverSounds[randomGameOver]);
+    }
+
+    public void PlayButtonSound()
+    {
+        randomButtonSound = Random.Range(0, 3);
+        audioSrc.PlayOneShot(uiButtonSounds[randomButtonSound]);
     }
 }

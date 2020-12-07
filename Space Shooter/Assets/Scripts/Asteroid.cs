@@ -72,6 +72,7 @@ public class Asteroid : MonoBehaviour
 
         if (collisionInfo.collider.name == "Rocket")
         {
+            SoundManager.sndMan.PlayGameoverSound();
             SoundManager.sndMan.PlayDeathSound();
             //explosionSource.Play();
             //gameplay.RocketFail();
