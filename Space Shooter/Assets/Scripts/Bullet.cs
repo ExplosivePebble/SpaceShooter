@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo)
     {
-        explosionSource.Play();
+        //explosionSource.Play();
         Destroy(gameObject, 0.75f);
     }
 }
