@@ -74,7 +74,7 @@ public class Asteroid : MonoBehaviour
         {
             SoundManager.sndMan.PlayDeathSound();
             //explosionSource.Play();
-            gameplay.RocketFail();
+            //gameplay.RocketFail();
         }
     }
 
@@ -144,7 +144,8 @@ public class Asteroid : MonoBehaviour
 
     public void Destroy()
     {
-        explosionSource.Play();
+        SoundManager.sndMan.PlayAsteroidSound();
+        //explosionSource.Play();
         gameplay.asterodDestroyed();
         Destroy(gameObject, 0.01f);
     }

@@ -13,9 +13,13 @@ public class SoundManager : MonoBehaviour
 
     private AudioClip[] playerExplosionSounds;
 
+    private AudioClip[] asteroidExplosionSounds;
+
     private int randomLaserSound;
 
     private int randomDeathSound;
+
+    private int randomAsteroidSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,7 @@ public class SoundManager : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
         laserSounds = Resources.LoadAll<AudioClip>("LaserSounds");
         playerExplosionSounds = Resources.LoadAll<AudioClip>("PlayerDeathSounds");
+        asteroidExplosionSounds = Resources.LoadAll<AudioClip>("AsteroidSounds");
 
     }
 
@@ -36,5 +41,11 @@ public class SoundManager : MonoBehaviour
     {
         randomLaserSound = Random.Range(0, 4);
         audioSrc.PlayOneShot(laserSounds[randomLaserSound]);
+    }
+
+    public void PlayAsteroidSound()
+    {
+        randomAsteroidSound = Random.Range(0, 3);
+        audioSrc.PlayOneShot(asteroidExplosionSounds[randomAsteroidSound]);
     }
 }
